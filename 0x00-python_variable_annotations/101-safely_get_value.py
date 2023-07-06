@@ -7,8 +7,8 @@ import typing
 
 
 def safely_get_value(dct: Mapping,
-                     key: Any, default: Union[typing.TypeVar('~T'), None] =
-                     None) -> Union[Any, typing.TypeVar('~T')]:
+                     key: Any, default: Union[typing.TypeVar('T'), None] =
+                     None) -> Union[Any, typing.TypeVar('T')]:
     """Safely get value for a key in dictionary"""
     if key in dct:
         return dct[key]
