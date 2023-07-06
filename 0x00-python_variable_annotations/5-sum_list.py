@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from typing import List
 """Take a list of floats and return their value"""
+from typing import List
 
 flist = List[float]
 
