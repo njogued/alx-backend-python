@@ -9,6 +9,7 @@ rtype = Union[Any, None]
 
 
 def safe_first_element(lst: lstype) -> rtype:
+    """Safe first element for a list or return none"""
     if lst:
         return lst[0]
     else:
