@@ -4,7 +4,7 @@ import random
 import asyncio
 
 
-async def wait_random(n=10):
+async def wait_random(n: int = 10) -> float:
     """Wait for random time below 10 seconds"""
     val = random.uniform(0, n)
     await asyncio.sleep(val)
