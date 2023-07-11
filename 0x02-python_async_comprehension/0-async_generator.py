@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """async_generator coroutine that yields a random module"""
 import random
 from typing import Generator
