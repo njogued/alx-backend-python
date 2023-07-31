@@ -17,12 +17,12 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(access_nested_map(nested_dict, path), output)
 
     @parameterized.expand([
-        ("no dict", {}, ["a"]),
-        ("no key b", {"a": 1}, ["a", "b"]),
+        ("no dict", {}, ["a"], KeyError),
+        ("no key b", {"a": 1}, ["a", "b"], KeyError),
     ])
-    def test_access_nested_map_exception(self, _, nested_dict, path):
+    def test_access_nested_map_exception(self, _, nested_dict, path, expected_error):
         """Check whether the access nested map raises an exception"""
-        with self.assertRaises(KeyError) as e:
+        with self.assertRaises(expected_error) as e:
             access_nested_map(nested_dict, path)
 
 
