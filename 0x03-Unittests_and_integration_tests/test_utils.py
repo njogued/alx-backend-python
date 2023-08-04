@@ -2,6 +2,9 @@
 """Unittest for the nested map function"""
 from parameterized import parameterized
 import unittest
+import utils
+from unittest import mock
+from unittest.mock import patch
 access_nested_map = __import__("utils").access_nested_map
 get_json = __import__("utils").get_json
 
@@ -33,11 +36,16 @@ class TestGetJson(unittest.TestCase):
         ('http://example.com', {'payload': True}),
         ('http://holberton.io', {'payload': False}),
     ])
-    def test_get_json(self):
+    def test_get_json(self, url, expected_output):
         """Test whether the get json method works"""
 
-        with unittest.mock.patch('get_json') as mock_json:
-            mock_json
+        with unittest.mock.patch('utils.requests') as mock_req:
+            mock_resp = mock.Mock()
+            mock_resp.json.return_value = expected_output
+            mock_req.get.return_value = mock_resp
+            payload = get_json(url)
+            mock_req.get.assert_called_once_with(url)
+            self.assertEqual(payload, expected_output)
 
 
 if __name__ == "__main__":
